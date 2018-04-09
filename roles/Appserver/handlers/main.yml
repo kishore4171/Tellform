@@ -1,2 +1,14 @@
 ---
 # handlers file for Appserver
+- name: restart redis service on appserver
+  service:
+    name: redis-server
+    state: restarted
+- name: enable the redis service
+  service:
+    name: redis-server
+    enabled: yes
+- name: start redis service on appserver
+  service:
+    name: redis-server
+    state: started

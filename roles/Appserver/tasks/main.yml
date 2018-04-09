@@ -1,2 +1,27 @@
 ---
 # tasks file for Appserver
+- name: create a directory to place the shell file
+  # create a directory(nodesetup) if it doesn't exist
+  # installation steps are taken from https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-16-04
+  file:
+    path: "{{ folder_path }}"
+    state: directory
+    mode: 0755
+- name: Download nodejs package setup
+  command: curl -sL https://deb.nodesource.com/setup_{{ nodejs_version }}.x -o {{ folder_path }}/nodesource_setup.sh
+- name: Execute downlaoded nodesource_setup.sh
+    shell: sudo bash {{ folder_path }}/nodesource_setup.sh
+- name: install nodejs package now
+  apt:
+    name: nodejs
+    state: present
+- name: copy the sample nodejs code to check the applciaiton running on target node
+  template:
+    src: "templates/hello.js.j2"
+    dest: "{{ folder_path }}/hello.js"
+- name: install pm2
+  npm:
+    name: pm2
+    global: y
+- name: start node.js avi_application
+  command: "pm2 restart {{ folder_path }}/hello.js"

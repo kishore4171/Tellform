@@ -1,2 +1,12 @@
 ---
 # tasks file for common
+- name: update the apt packages
+  apt:
+    update_cache: yes
+- name: install common utilities
+  apt:
+    name: {{ items }}
+    state: present
+  loop:
+     - tree
+     - git
