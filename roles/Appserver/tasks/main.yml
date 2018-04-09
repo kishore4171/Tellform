@@ -10,7 +10,7 @@
 - name: Download nodejs package setup
   command: curl -sL https://deb.nodesource.com/setup_{{ nodejs_version }}.x -o {{ folder_path }}/nodesource_setup.sh
 - name: Execute downlaoded nodesource_setup.sh
-    shell: sudo bash {{ folder_path }}/nodesource_setup.sh
+  shell: sudo bash {{ folder_path }}/nodesource_setup.sh
 - name: install nodejs package now
   apt:
     name: nodejs
