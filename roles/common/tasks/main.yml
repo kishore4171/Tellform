@@ -5,7 +5,7 @@
     update_cache: yes
 - name: install common utilities
   apt:
-    name: "{{ items }}"
+    name: "{{items}}"
     state: present
   loop:
      - tree
