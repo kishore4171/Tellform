@@ -3,3 +3,5 @@
 folder_path: /home/ansible/nodesetup
 template_path: /home/ansible/usecase_ansible
 nodejs_version: 6
+appserver_ip: "172.31.41.44"
+appserver_port: "8080"
