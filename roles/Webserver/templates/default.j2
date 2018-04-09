@@ -1,7 +1,7 @@
 server {
     listen 80;
 
-    server_name {{ webserver_dns_name }}
+    server_name {{ webserver_dns_name }};
 
     location / {
         proxy_pass http://{{ appserver_ip }}:{{ appserver_port }};
