@@ -19,9 +19,12 @@
   template:
     src: "templates/hello.js.j2"
     dest: "{{ folder_path }}/hello.js"
+- name: Delete old pm2 process
+  command: pm2 delete ws-node
+  ignore_errors: yes
 - name: install pm2
   npm:
     name: pm2
     global: y
 - name: start node.js avi_application
-  command: "pm2 restart {{ folder_path }}/hello.js"
+  command: "pm2 start {{ folder_path }}/hello.js"
